@@ -2,8 +2,5 @@ FROM node:12
 
 RUN npm install -g ask-cli
 
-RUN git config --global user.email "info@opendatahub.bz.it" && \
-    git config --global user.name "Jenkins" && \
-    mkdir -p /.ask
-
-ADD docker/cli_config /.ask/cli_config
+RUN mkdir -p /home/node && \
+    usermod -d /home/node node

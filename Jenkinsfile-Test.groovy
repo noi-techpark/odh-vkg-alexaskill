@@ -7,19 +7,28 @@ pipeline {
     }
 
     environment {
-        ASK_REFRESH_TOKEN = credentials('odh-vkg-alexaskill-ask-refresh-token')
-        ASK_VENDOR_ID = credentials('odh-vkg-alexaskill-ask-vendor-id')
+        ASK_CLI_CONFIG = credentials('odh-vkg-alexaskill-cli-config')
         SKILL_ID = "amzn1.ask.skill.15666bcd-6da0-4f2b-a6e8-ee1cb3f17058"
         SKILL_NAME = "odh-vkg"
+        GIT_NAME = "Jenkins"
+        GIT_EMAIL = "info@opendatahub.bz.it"
     }
 
     stages {
+        stage('Configure') {
+            steps {
+                sh 'mkdir -p ~/.ask'
+                sh 'cat "${ASK_CLI_CONFIG}" > ~/.ask/cli_config'
+                sh 'git config --global user.email "${GIT_EMAIL}"'
+                sh 'git config --global user.name "${GIT_NAME}"'
+            }
+        }
         stage('Clone') {
             steps {
                 sh 'ask clone --skill-id ${SKILL_ID}'
             }
         }
-        stage('Copy & Configure') {
+        stage('Copy') {
             steps {
                 sh 'cp -R lambda ${SKILL_NAME}/lambda'
                 sh 'cp -R models ${SKILL_NAME}/models'
