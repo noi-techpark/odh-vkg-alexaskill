@@ -1,3 +1,6 @@
 FROM node:12
 
 RUN npm install -g ask-cli
+
+RUN git config --global user.email "info@opendatahub.bz.it" && \
+    git config --global user.name "Jenkins"

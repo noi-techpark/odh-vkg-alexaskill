@@ -14,12 +14,6 @@ pipeline {
     }
 
     stages {
-        stage('Setup') {
-            steps {
-                sh 'git config --system user.email "info@opendatahub.bz.it"'
-                sh 'git config --system user.name "Jenkins"'
-            }
-        }
         stage('Clone') {
             steps {
                 sh 'ask clone --skill-id ${SKILL_ID}'
