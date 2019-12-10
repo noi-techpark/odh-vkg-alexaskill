@@ -6,4 +6,5 @@ ARG JENKINS_USER_ID=1000
 RUN addgroup -g $JENKINS_GROUP_ID jenkins && \
     adduser -D -u $JENKINS_USER_ID -G jenkins jenkins
 
-RUN npm install -g ask-cli
+RUN apk add git && \
+    npm install -g ask-cli
