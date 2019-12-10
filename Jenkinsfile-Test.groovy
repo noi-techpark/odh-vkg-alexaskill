@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh 'cd ${SKILL_NAME} && git add -A'
                 sh 'cd ${SKILL_NAME} && git commit -m "Deployment"'
-                sh 'cd ${SKILL_NAME} && ask deploy'
+                sh 'cd ${SKILL_NAME} && ask deploy --force'
             }
         }
     }
