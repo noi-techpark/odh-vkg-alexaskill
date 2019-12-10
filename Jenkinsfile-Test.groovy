@@ -16,8 +16,8 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'git config --global user.email "info@opendatahub.bz.it"'
-                sh 'git config --global user.name "Jenkins"'
+                sh 'git config --system user.email "info@opendatahub.bz.it"'
+                sh 'git config --system user.name "Jenkins"'
             }
         }
         stage('Clone') {
