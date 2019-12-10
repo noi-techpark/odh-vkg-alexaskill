@@ -4,6 +4,6 @@ RUN npm install -g ask-cli
 
 RUN git config --global user.email "info@opendatahub.bz.it" && \
     git config --global user.name "Jenkins" && \
-    mkdir -p /root/.ask
+    mkdir -p /.ask
 
-ADD docker/cli_config /root/.ask/cli_config
+ADD docker/cli_config /.ask/cli_config
