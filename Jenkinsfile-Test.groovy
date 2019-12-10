@@ -14,9 +14,11 @@ pipeline {
 
     stages {
         stage('Setup') {
-            sh 'cat "${ASK_CLI_CONFIG}" > ~/.ask/cli_config'
-            sh 'git config --global user.email "info@opendatahub.bz.it"'
-            sh 'git config --global user.name "Jenkins"'
+            steps {
+                sh 'cat "${ASK_CLI_CONFIG}" > ~/.ask/cli_config'
+                sh 'git config --global user.email "info@opendatahub.bz.it"'
+                sh 'git config --global user.name "Jenkins"'
+            }
         }
         stage('Clone') {
             steps {
