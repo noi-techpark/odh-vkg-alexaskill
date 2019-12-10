@@ -7,7 +7,8 @@ pipeline {
     }
 
     environment {
-        ASK_CLI_CONFIG = credentials('odh-vkg-alexaskill-cli-config')
+        ASK_REFRESH_TOKEN = credentials('odh-vkg-alexaskill-ask-refresh-token')
+        ASK_VENDOR_ID = credentials('odh-vkg-alexaskill-ask-vendor-id')
         SKILL_ID = "amzn1.ask.skill.15666bcd-6da0-4f2b-a6e8-ee1cb3f17058"
         SKILL_NAME = "odh-vkg"
     }
@@ -15,9 +16,6 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'echo $HOME'
-                sh 'mkdir -p ~/.ask'
-                sh 'cat "${ASK_CLI_CONFIG}" > ~/.ask/cli_config'
                 sh 'git config --global user.email "info@opendatahub.bz.it"'
                 sh 'git config --global user.name "Jenkins"'
             }
