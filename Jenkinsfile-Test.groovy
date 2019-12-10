@@ -15,6 +15,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
+                sh 'echo $HOME'
                 sh 'mkdir -p ~/.ask'
                 sh 'cat "${ASK_CLI_CONFIG}" > ~/.ask/cli_config'
                 sh 'git config --global user.email "info@opendatahub.bz.it"'
