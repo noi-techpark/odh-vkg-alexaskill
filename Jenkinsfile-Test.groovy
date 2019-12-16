@@ -30,6 +30,8 @@ pipeline {
         }
         stage('Copy') {
             steps {
+                sh 'rm -rf ${SKILL_NAME}/lambda'
+                sh 'rm -rf ${SKILL_NAME}/models'
                 sh 'cp -R lambda ${SKILL_NAME}/lambda'
                 sh 'cp -R models ${SKILL_NAME}/models'
             }
