@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cd ${SKILL_NAME} && git add -A'
-                sh 'cd ${SKILL_NAME} && git commit -m "Deployment"'
+                sh 'cd ${SKILL_NAME} && git commit --allow-empty -m "Deployment"'
                 sh 'cd ${SKILL_NAME} && (yes | ask deploy --force)'
             }
         }
